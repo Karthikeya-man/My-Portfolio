@@ -1645,7 +1645,8 @@
             border: 1px solid var(--glass-border);
         }
 
-        .lightbox-close, .lightbox-next {
+        .lightbox-close,
+        .lightbox-next {
             position: absolute;
             background: rgba(2, 8, 26, 0.8);
             color: var(--accent-blue);
@@ -1661,7 +1662,8 @@
             z-index: 9991;
         }
 
-        .lightbox-close:hover, .lightbox-next:hover {
+        .lightbox-close:hover,
+        .lightbox-next:hover {
             background: var(--accent-blue);
             color: var(--bg-dark);
         }
@@ -2133,42 +2135,57 @@
                 <div class="vol-card glass">
                     <div class="vol-icon">🎯</div>
                     <h3 class="vol-title">Tech Fest Volunteer</h3>
-                    <p class="inline-details" style="justify-content: flex-start; margin-bottom: 0.5rem; margin-top: -0.5rem;">[Date] • [Location]</p>
+                    <p class="inline-details"
+                        style="justify-content: flex-start; margin-bottom: 0.5rem; margin-top: -0.5rem;">[Date] •
+                        [Location]</p>
                     <p class="vol-desc">Coordinated technical events, managed registrations, and supported workshops at
                         college annual tech fests.</p>
                     <span class="vol-tag" style="margin-bottom:0.5rem;">Event Management</span>
                     <div class="vol-slider">
-                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+1" class="slider-img active" alt="Event Photo 1">
-                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+2" class="slider-img" alt="Event Photo 2">
-                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+3" class="slider-img" alt="Event Photo 3">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+1"
+                            class="slider-img active" alt="Event Photo 1">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+2"
+                            class="slider-img" alt="Event Photo 2">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+3"
+                            class="slider-img" alt="Event Photo 3">
                         <div class="slider-next-btn">→</div>
                     </div>
                 </div>
                 <div class="vol-card glass">
                     <div class="vol-icon">🤖</div>
                     <h3 class="vol-title">AI/ML Workshop Helper</h3>
-                    <p class="inline-details" style="justify-content: flex-start; margin-bottom: 0.5rem; margin-top: -0.5rem;">[Date] • [Location]</p>
+                    <p class="inline-details"
+                        style="justify-content: flex-start; margin-bottom: 0.5rem; margin-top: -0.5rem;">[Date] •
+                        [Location]</p>
                     <p class="vol-desc">Assisted in conducting hands-on AI workshops for juniors — taught Python basics
                         and intro to machine learning.</p>
                     <span class="vol-tag" style="margin-bottom:0.5rem;">Teaching & Mentoring</span>
                     <div class="vol-slider">
-                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+1" class="slider-img active" alt="Event Photo 1">
-                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+2" class="slider-img" alt="Event Photo 2">
-                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+3" class="slider-img" alt="Event Photo 3">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+1"
+                            class="slider-img active" alt="Event Photo 1">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+2"
+                            class="slider-img" alt="Event Photo 2">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+3"
+                            class="slider-img" alt="Event Photo 3">
                         <div class="slider-next-btn">→</div>
                     </div>
                 </div>
                 <div class="vol-card glass">
                     <div class="vol-icon">🌐</div>
                     <h3 class="vol-title">Community Organizer</h3>
-                    <p class="inline-details" style="justify-content: flex-start; margin-bottom: 0.5rem; margin-top: -0.5rem;">[Date] • [Location]</p>
+                    <p class="inline-details"
+                        style="justify-content: flex-start; margin-bottom: 0.5rem; margin-top: -0.5rem;">[Date] •
+                        [Location]</p>
                     <p class="vol-desc">Volunteered at multiple inter-college events. Built network of 100+ peers in the
                         AI/tech community.</p>
                     <span class="vol-tag" style="margin-bottom:0.5rem;">Community Building</span>
                     <div class="vol-slider">
-                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+1" class="slider-img active" alt="Event Photo 1">
-                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+2" class="slider-img" alt="Event Photo 2">
-                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+3" class="slider-img" alt="Event Photo 3">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+1"
+                            class="slider-img active" alt="Event Photo 1">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+2"
+                            class="slider-img" alt="Event Photo 2">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+3"
+                            class="slider-img" alt="Event Photo 3">
                         <div class="slider-next-btn">→</div>
                     </div>
                 </div>
@@ -2540,7 +2557,7 @@
             const imgs = slider.querySelectorAll('.slider-img');
             const nextBtn = slider.querySelector('.slider-next-btn');
             let currentIndex = 0;
-            
+
             const showImage = (index) => {
                 imgs.forEach(img => img.classList.remove('active'));
                 imgs[index].classList.add('active');
