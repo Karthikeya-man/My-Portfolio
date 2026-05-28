@@ -965,6 +965,17 @@
             align-items: center;
             justify-content: center;
             border-bottom: 1px solid var(--glass-border);
+            overflow: hidden;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
 
         .project-banner svg {
@@ -1813,7 +1824,7 @@
                         <div class="corner-accent corner-tr"></div>
                         <div class="corner-accent corner-bl"></div>
                         <div class="corner-accent corner-br"></div>
-                        
+
                         <!-- Profile Photo -->
                         <img src="photo.jpg" alt="Karthikeya Manchala" class="profile-img">
                     </div>
@@ -1908,11 +1919,8 @@
                 <div class="project-card glass reveal">
                     <div class="status-live">Live</div>
                     <div class="project-banner" style="background: linear-gradient(135deg, #101820, #004d40);">
-                        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <circle cx="50" cy="50" r="40" stroke="#fff" stroke-width="1.5" fill="none"
-                                stroke-dasharray="10 5" />
-                            <path d="M10 50 L90 50 M50 10 L50 90" stroke="#fff" stroke-width="0.5" />
-                        </svg>
+                        <!-- HOW TO ADD PROJECT PHOTO: Replace the src with your image -->
+                        <img src="CuraPath_AI.jpg" alt="Curapath AI Screenshot" class="project-img">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title orbitron">Curapath AI - An AI Symptom Analyzer</h3>
@@ -1936,10 +1944,8 @@
                 <div class="project-card glass reveal" style="transition-delay: 0.1s;">
                     <div class="status-live">Live</div>
                     <div class="project-banner" style="background: linear-gradient(135deg, #1a2a6c, #11998e, #2bc0e4);">
-                        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <rect x="25" y="25" width="50" height="50" stroke="#fff" stroke-width="1.5" fill="none" />
-                            <circle cx="50" cy="50" r="15" fill="#fff" />
-                        </svg>
+                        <!-- HOW TO ADD PROJECT PHOTO: Replace the src with your image -->
+                        <img src="Samatva-AI.jpg" alt="Samatva AI Screenshot" class="project-img">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title orbitron">Samatva AI - A Bias detection System</h3>
