@@ -162,6 +162,26 @@
             transition: opacity 0.3s;
         }
 
+        /* Hide custom cursor on mobile / touch devices */
+        @media (pointer: coarse) {
+
+            #cursor-dot,
+            #cursor-ring,
+            #cursor-glow {
+                display: none !important;
+            }
+
+            body,
+            a,
+            button,
+            .skill-card,
+            .project-card,
+            .cert-card,
+            .vol-card {
+                cursor: auto !important;
+            }
+        }
+
         h1,
         h2,
         h3,
@@ -1540,6 +1560,126 @@
                 padding: 6rem 5% 3rem;
             }
         }
+
+        /* Volunteer Slider */
+        .vol-slider {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 1rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .vol-slider img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            cursor: pointer;
+        }
+
+        .vol-slider img.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .slider-next-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(2, 8, 26, 0.6);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .slider-next-btn:hover {
+            background: var(--accent-blue);
+            color: var(--bg-dark);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(1, 3, 10, 0.95);
+            z-index: 9990;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(30, 144, 255, 0.2);
+            border: 1px solid var(--glass-border);
+        }
+
+        .lightbox-close, .lightbox-next {
+            position: absolute;
+            background: rgba(2, 8, 26, 0.8);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 9991;
+        }
+
+        .lightbox-close:hover, .lightbox-next:hover {
+            background: var(--accent-blue);
+            color: var(--bg-dark);
+        }
+
+        .lightbox-close {
+            top: 20px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .lightbox-next {
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 
@@ -1573,7 +1713,7 @@
         <div class="hero-text reveal">
             <span class="eyebrow">AI/ML STUDENT • BUILDER • PROBLEM SOLVER</span>
             <h1 class="reveal active stagger-1">Hi, I'm <span class="text-blue-gradient">Karthikeya</span> Manchala</h1>
-            <h2 class="reveal active stagger-2">3rd Year AI/ML Engineering Student</h2>
+            <h2 class="reveal active stagger-2">AI/ML Engineering Student</h2>
             <div class="subtitle reveal active stagger-3"><span id="typewriter" class="typewriter"></span></div>
             <div class="hero-btns reveal active stagger-4">
                 <a href="#projects" class="btn btn-solid">View My Projects</a>
@@ -1672,8 +1812,8 @@
                 </div>
 
                 <div class="about-col-2">
-                    <div class="about-eyebrow">3rd Year · AI/ML Engineering</div>
-                    <p class="about-text-p">I'm Karthikeya Manchala, a 3rd year AI/ML engineering student passionate
+                    <div class="about-eyebrow">AI/ML Engineering</div>
+                    <p class="about-text-p">I'm Karthikeya Manchala, an AI/ML engineering student passionate
                         about building intelligent systems that solve real problems. From training neural networks to
                         deploying ML models, I love the full journey — from raw idea to working product.</p>
                     <p class="about-text-p">Beyond code, I actively volunteer at tech events and communities — because I
@@ -1856,56 +1996,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Project 5 -->
-                <div class="project-card glass reveal" style="transition-delay: 0.1s;">
-                    <div class="project-banner" style="background: linear-gradient(135deg, #141e30, #243b55);">
-                        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <rect x="20" y="20" width="15" height="15" fill="#fff" />
-                            <rect x="65" y="20" width="15" height="15" fill="#fff" />
-                            <rect x="42.5" y="65" width="15" height="15" fill="#fff" />
-                            <path d="M27.5 35 L50 65 M72.5 35 L50 65" stroke="#fff" stroke-width="1.5" />
-                        </svg>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title orbitron">Data Dashboard — COVID Stats</h3>
-                        <p class="project-desc">Interactive visualization dashboard with real-time chart updates using
-                            Plotly.</p>
-                        <div class="project-tags">
-                            <span class="p-tag">Pandas</span><span class="p-tag">Plotly</span><span
-                                class="p-tag">Streamlit</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-ghost" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">GitHub
-                                ↗</a>
-                            <a href="#" class="btn btn-ghost" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">View
-                                Project ↗</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 6 -->
-                <div class="project-card glass reveal" style="transition-delay: 0.2s;">
-                    <div class="project-banner" style="background: linear-gradient(135deg, #000000, #434343);">
-                        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <path d="M50 10 L90 50 L50 90 L10 50 Z" stroke="#fff" stroke-width="1.5" fill="none" />
-                            <circle cx="50" cy="50" r="10" fill="#fff" />
-                        </svg>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title orbitron">Handwritten Digit Recognizer</h3>
-                        <p class="project-desc">MNIST-trained CNN with a Streamlit UI where you draw a digit and it
-                            predicts live.</p>
-                        <div class="project-tags">
-                            <span class="p-tag">TensorFlow</span><span class="p-tag">Streamlit</span><span
-                                class="p-tag">OpenCV</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-ghost" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">GitHub
-                                ↗</a>
-                            <a href="#" class="btn btn-ghost" style="padding: 0.4rem 0.8rem; font-size: 0.75rem;">View
-                                Project ↗</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1920,7 +2010,7 @@
             <div class="timeline">
                 <div class="timeline-item left reveal">
                     <div class="timeline-content glass">
-                        <div class="time-date">📍 2025 — Present</div>
+                        <div class="time-date">📍 2026 — Present</div>
                         <h3 class="time-title">3rd Year | AI/ML Student</h3>
                         <p class="time-desc">Deepening expertise in deep learning and NLP. Building real projects and
                             contributing to open-source. Actively exploring LLMs and agentic AI systems.</p>
@@ -1928,15 +2018,15 @@
                 </div>
                 <div class="timeline-item right reveal">
                     <div class="timeline-content glass">
-                        <div class="time-date">📍 2024</div>
-                        <h3 class="time-title">Event Volunteer Lead</h3>
+                        <div class="time-date">📍 2025</div>
+                        <h3 class="time-title">Volunteer</h3>
                         <p class="time-desc">Led technical coordination for college's annual tech fest — managed 500+
                             participants, coordinated speakers, and ran AI/ML workshop sessions.</p>
                     </div>
                 </div>
                 <div class="timeline-item left reveal">
                     <div class="timeline-content glass">
-                        <div class="time-date">📍 2024</div>
+                        <div class="time-date">📍 2025</div>
                         <h3 class="time-title">Personal Projects Phase</h3>
                         <p class="time-desc">Built and deployed 6+ AI/ML projects independently — from data
                             preprocessing to model deployment. Crossed 50+ GitHub commits.</p>
@@ -1944,7 +2034,7 @@
                 </div>
                 <div class="timeline-item right reveal">
                     <div class="timeline-content glass">
-                        <div class="time-date">📍 2023</div>
+                        <div class="time-date">📍 2025</div>
                         <h3 class="time-title">Certifications & Deep Dive</h3>
                         <p class="time-desc">Completed multiple online AI/ML certifications. Started competitive ML on
                             Kaggle. Built first real model from scratch.</p>
@@ -1952,9 +2042,9 @@
                 </div>
                 <div class="timeline-item left reveal">
                     <div class="timeline-content glass">
-                        <div class="time-date">📍 2023</div>
+                        <div class="time-date">📍 2025</div>
                         <h3 class="time-title">Community Volunteer</h3>
-                        <p class="time-desc">Volunteered at multiple college tech events and workshops. Helped organize
+                        <p class="time-desc">Volunteered for multiple college tech events and workshops. Helped organize
                             coding competitions and AI awareness seminars.</p>
                     </div>
                 </div>
@@ -2043,23 +2133,44 @@
                 <div class="vol-card glass">
                     <div class="vol-icon">🎯</div>
                     <h3 class="vol-title">Tech Fest Volunteer</h3>
+                    <p class="inline-details" style="justify-content: flex-start; margin-bottom: 0.5rem; margin-top: -0.5rem;">[Date] • [Location]</p>
                     <p class="vol-desc">Coordinated technical events, managed registrations, and supported workshops at
                         college annual tech fests.</p>
-                    <span class="vol-tag">Event Management</span>
+                    <span class="vol-tag" style="margin-bottom:0.5rem;">Event Management</span>
+                    <div class="vol-slider">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+1" class="slider-img active" alt="Event Photo 1">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+2" class="slider-img" alt="Event Photo 2">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+3" class="slider-img" alt="Event Photo 3">
+                        <div class="slider-next-btn">→</div>
+                    </div>
                 </div>
                 <div class="vol-card glass">
                     <div class="vol-icon">🤖</div>
                     <h3 class="vol-title">AI/ML Workshop Helper</h3>
+                    <p class="inline-details" style="justify-content: flex-start; margin-bottom: 0.5rem; margin-top: -0.5rem;">[Date] • [Location]</p>
                     <p class="vol-desc">Assisted in conducting hands-on AI workshops for juniors — taught Python basics
                         and intro to machine learning.</p>
-                    <span class="vol-tag">Teaching & Mentoring</span>
+                    <span class="vol-tag" style="margin-bottom:0.5rem;">Teaching & Mentoring</span>
+                    <div class="vol-slider">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+1" class="slider-img active" alt="Event Photo 1">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+2" class="slider-img" alt="Event Photo 2">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+3" class="slider-img" alt="Event Photo 3">
+                        <div class="slider-next-btn">→</div>
+                    </div>
                 </div>
                 <div class="vol-card glass">
                     <div class="vol-icon">🌐</div>
                     <h3 class="vol-title">Community Organizer</h3>
+                    <p class="inline-details" style="justify-content: flex-start; margin-bottom: 0.5rem; margin-top: -0.5rem;">[Date] • [Location]</p>
                     <p class="vol-desc">Volunteered at multiple inter-college events. Built network of 100+ peers in the
                         AI/tech community.</p>
-                    <span class="vol-tag">Community Building</span>
+                    <span class="vol-tag" style="margin-bottom:0.5rem;">Community Building</span>
+                    <div class="vol-slider">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+1" class="slider-img active" alt="Event Photo 1">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+2" class="slider-img" alt="Event Photo 2">
+                        <img src="https://via.placeholder.com/600x400/02081a/1e90ff?text=Upload+Photo+3" class="slider-img" alt="Event Photo 3">
+                        <div class="slider-next-btn">→</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2076,15 +2187,15 @@
                     you have an interesting problem, I want to help solve it."</p>
 
                 <div class="social-links">
-                    <a href="#" class="social-icon glass">GH</a>
-                    <a href="#" class="social-icon glass">IN</a>
-                    <a href="#" class="social-icon glass">𝕏</a>
-                    <a href="#" class="social-icon glass">@</a>
+                    <a href="https://github.com/Karthikeya-man" class="social-icon glass">GH</a>
+                    <a href="https://www.linkedin.com/in/karthikeya-manchala-a84b0131a" class="social-icon glass">LN</a>
+                    <a href="https://x.com/Manchala6565" class="social-icon glass">𝕏</a>
+                    <a href="mailto:karthikeyamanchala2@gmail.com" class="social-icon glass">@</a>
                 </div>
 
                 <div class="email-copy glass"
-                    onclick="navigator.clipboard.writeText('karthikeya.manchala@gmail.com'); alert('Email copied!');">
-                    ✉ karthikeya.manchala@gmail.com
+                    onclick="navigator.clipboard.writeText('manchalakarthikeya2@gmail.com'); alert('Email copied!');">
+                    ✉ manchalakarthikeya2@gmail.com
                 </div>
             </div>
             <div class="contact-form">
@@ -2122,8 +2233,10 @@
                 <a href="#contact">Contact</a>
             </div>
             <div class="social-links" style="margin: 0; gap: 1rem;">
-                <a href="#" class="social-icon glass" style="width:40px;height:40px;font-size:0.9rem;">GH</a>
-                <a href="#" class="social-icon glass" style="width:40px;height:40px;font-size:0.9rem;">IN</a>
+                <a href="https://github.com/Karthikeya-man" class="social-icon glass"
+                    style="width:40px;height:40px;font-size:0.9rem;">GH</a>
+                <a href="https://www.linkedin.com/in/karthikeya-manchala-a84b0131a" class="social-icon glass"
+                    style="width:40px;height:40px;font-size:0.9rem;">LN</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -2210,7 +2323,7 @@
                     textDisplay.innerHTML = currentPhrase.join('');
                 }
                 if (isDeleting && j <= phrases[i].length) {
-                    currentPhrase.pop(phrases[i][j]); j--;
+                    currentPhrase.pop(); j--;
                     textDisplay.innerHTML = currentPhrase.join('');
                 }
                 if (j == phrases[i].length) { isEnd = true; isDeleting = true; }
@@ -2317,35 +2430,6 @@
         ];
 
         const skillsGrid = document.getElementById('skillsGrid');
-        function renderSkills(filter = 'all') {
-            skillsGrid.innerHTML = '';
-            skillsData.forEach(skill => {
-                if (filter === 'all' || skill.cat === filter) {
-                    const card = document.createElement('div');
-                    card.className = 'skill-card glass reveal active';
-                    card.innerHTML = `
-                        <div class="skill-header">
-                            <span class="skill-icon">${skill.icon}</span>
-                            <span style="flex:1">${skill.name}</span>
-                            <span class="text-blue">${skill.percent}%</span>
-                        </div>
-                        <div class="skill-bar-bg">
-                            <div class="skill-bar-fill" style="width: ${skill.percent}%"></div>
-                        </div>
-                    `;
-                    skillsGrid.appendChild(card);
-                }
-            });
-        }
-        renderSkills();
-
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                renderSkills(e.target.dataset.filter);
-            });
-        });
 
         // Scroll Observer
         const observerOptions = { threshold: 0.15 };
@@ -2385,6 +2469,39 @@
             });
         }, observerOptions);
 
+        function renderSkills(filter = 'all') {
+            skillsGrid.innerHTML = '';
+            skillsData.forEach(skill => {
+                if (filter === 'all' || skill.cat === filter) {
+                    const card = document.createElement('div');
+                    card.className = 'skill-card glass reveal';
+                    card.innerHTML = `
+                        <div class="skill-header">
+                            <span class="skill-icon">${skill.icon}</span>
+                            <span style="flex:1">${skill.name}</span>
+                            <span class="text-blue">${skill.percent}%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 0%"></div>
+                        </div>
+                    `;
+                    skillsGrid.appendChild(card);
+                    if (typeof observer !== 'undefined') {
+                        observer.observe(card);
+                    }
+                }
+            });
+        }
+        renderSkills();
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderSkills(e.target.dataset.filter);
+            });
+        });
+
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         observer.observe(document.querySelector('.about-stats'));
 
@@ -2405,14 +2522,86 @@
             let current = '';
             document.querySelectorAll('section').forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) { current = section.getAttribute('id'); }
+                if (window.scrollY >= sectionTop - 150) { current = section.getAttribute('id'); }
             });
             document.querySelectorAll('.nav-links a').forEach(a => {
                 a.classList.remove('active');
                 if (a.getAttribute('href') === `#${current}`) { a.classList.add('active'); }
             });
         });
+
+        // Volunteer Sliders & Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        let currentSliderImgs = [];
+        let currentLightboxIndex = 0;
+
+        document.querySelectorAll('.vol-slider').forEach(slider => {
+            const imgs = slider.querySelectorAll('.slider-img');
+            const nextBtn = slider.querySelector('.slider-next-btn');
+            let currentIndex = 0;
+            
+            const showImage = (index) => {
+                imgs.forEach(img => img.classList.remove('active'));
+                imgs[index].classList.add('active');
+            };
+
+            const nextImage = () => {
+                currentIndex = (currentIndex + 1) % imgs.length;
+                showImage(currentIndex);
+            };
+
+            // Auto scroll every 20 seconds
+            let interval = setInterval(nextImage, 20000);
+
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nextImage();
+                // Reset interval when manually clicked
+                clearInterval(interval);
+                interval = setInterval(nextImage, 20000);
+            });
+
+            imgs.forEach((img, index) => {
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentSliderImgs = Array.from(imgs);
+                    currentLightboxIndex = index;
+                    openLightbox();
+                });
+            });
+        });
+
+        function openLightbox() {
+            lightboxImg.src = currentSliderImgs[currentLightboxIndex].src;
+            lightbox.classList.add('active');
+        }
+
+        document.getElementById('lightbox-close').addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightbox.classList.remove('active');
+        });
+
+        document.getElementById('lightbox-next').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentSliderImgs.length;
+            lightboxImg.src = currentSliderImgs[currentLightboxIndex].src;
+        });
+
+        // Close on clicking outside image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
     </script>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" id="lightbox-close">✕</div>
+        <img src="" alt="Fullscreen view" id="lightbox-img">
+        <div class="lightbox-next" id="lightbox-next">→</div>
+    </div>
 </body>
 
 </html>
